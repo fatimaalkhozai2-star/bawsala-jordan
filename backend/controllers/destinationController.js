@@ -16,8 +16,26 @@ const createDestination = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+const getDestinationById = async (req, res) => {
+  try {
+    const destination = await Destination.findById(req.params.id);
+
+    if (!destination) {
+      return res.status(404).json({
+        message: "Destination not found"
+      });
+    }
+
+    res.status(200).json(destination);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllDestinations,
- createDestination
+ createDestination,
+ getDestinationById
 
 };
