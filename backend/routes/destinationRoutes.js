@@ -5,12 +5,12 @@ const router = express.Router();
 const {
   getAllDestinations,
   createDestination,
-  getDestinationById
+  getDestinationById,
+  updateDestination
 } = require("../controllers/destinationController");
 
 router.get("/", getAllDestinations);
 router.post("/", createDestination);
 router.get("/:id", getDestinationById);
-
+router.put("/:id", updateDestination);
 module.exports = router;
-//6adc6c477e1de5a35f03223e
