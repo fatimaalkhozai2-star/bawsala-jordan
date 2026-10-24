@@ -56,12 +56,31 @@ const updateDestination = async (req, res) => {
   }
 };
 
+// Delete a destination
+const deleteDestination = async (req, res) => {
+  try {
+    const destination = await Destination.findByIdAndDelete(req.params.id);
 
+    if (!destination) {
+      return res.status(404).json({
+        message: "Destination not found"
+      });
+    }
+
+    res.status(200).json({
+      message: "Destination deleted successfully"
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 module.exports = {
   getAllDestinations,
  createDestination,
  getDestinationById,
- updateDestination
+ updateDestination,
+   deleteDestination
+
 
 
 };
