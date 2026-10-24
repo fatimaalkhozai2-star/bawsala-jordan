@@ -7,6 +7,17 @@ const getAllDestinations = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+// Create a new destination
+const createDestination = async (req, res) => {
+  try {
+    const destination = await Destination.create(req.body);
+    res.status(201).json(destination);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 module.exports = {
-  getAllDestinations
+  getAllDestinations,
+ createDestination
+
 };
