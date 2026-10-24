@@ -1,12 +1,42 @@
 const Destination = require("../models/Destination");
+
 const getAllDestinations = async (req, res) => {
   try {
-    const destinations = await Destination.find();
-    res.status(200).json(destinations);
+    //console.log("getAllDestinations is running");
+    //return res.status(200).json({ message: "NEW CONTROLLER WORKS" });
+    const { search, governorate, category, page = 1, limit = 10 } = req.query;
+
+    const filter = {};
+
+    if (search) {
+      filter.name = { $regex: search, $options: "i" };
+    }
+
+    if (governorate) {
+      filter.governorate = governorate;
+    }
+
+    if (category) {
+      filter.category = category;
+    }
+
+    const destinations = await Destination.find(filter)
+      .skip((Number(page) - 1) * Number(limit))
+      .limit(Number(limit));
+
+    const total = await Destination.countDocuments(filter);
+
+    res.status(200).json({
+      total,
+      page: Number(page),
+      totalPages: Math.ceil(total / Number(limit)),
+      destinations
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
 // Create a new destination
 const createDestination = async (req, res) => {
   try {
