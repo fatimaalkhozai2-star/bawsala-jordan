@@ -1,4 +1,6 @@
 
+
+require("dotenv").config();
 const express = require("express");
 const app = express();
 
@@ -7,6 +9,7 @@ const destinationRoutes = require("./routes/destinationRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const favoriteRoutes = require("./routes/favoriteRoutes");
 const tripRoutes = require("./routes/tripRoutes");
+const authRoutes = require("./routes/authRoutes");
 app.use(express.json());
 app.use("/api/destinations", destinationRoutes);
 app.use("/api/categories", categoryRoutes);
@@ -15,6 +18,7 @@ app.get("/test", (req, res) => {
 });
 app.use("/api/favorites", favoriteRoutes);
 app.use("/api/trips", tripRoutes);
+app.use("/api/auth", authRoutes);
 const PORT = 5000;
 
 app.get("/", (req, res) => {
