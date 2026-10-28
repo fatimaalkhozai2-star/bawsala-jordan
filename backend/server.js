@@ -25,6 +25,15 @@ app.get("/", (req, res) => {
      res.send("welcome to Bawsala Jordan");
 });
 
+const { protect } = require("./middleware/authMiddleware");
+
+app.get("/api/auth/protected", protect, (req, res) => {
+  res.status(200).json({
+    message: "Access granted",
+    user: req.user
+  });
+});
+
 const startServer = async () => {
   await connectDB();
 
