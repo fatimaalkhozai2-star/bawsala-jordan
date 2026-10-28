@@ -14,9 +14,7 @@ const { protect, adminOnly } = require("./middleware/authMiddleware");
 app.use(express.json());
 app.use("/api/destinations", destinationRoutes);
 app.use("/api/categories", categoryRoutes);
-app.get("/test", (req, res) => {
-  res.send("Test route works!");
-});
+
 app.use("/api/favorites", favoriteRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/auth", authRoutes);

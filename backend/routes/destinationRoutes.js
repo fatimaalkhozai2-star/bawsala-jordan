@@ -7,13 +7,18 @@ const {
   createDestination,
   getDestinationById,
   updateDestination,
-    deleteDestination
-
+  deleteDestination
 } = require("../controllers/destinationController");
 
+const { protect, adminOnly } = require("../middleware/authMiddleware");
+
+// Public routes
 router.get("/", getAllDestinations);
-router.post("/", createDestination);
 router.get("/:id", getDestinationById);
-router.put("/:id", updateDestination);
-router.delete("/:id", deleteDestination);
+
+// Admin-only routes
+router.post("/", protect, adminOnly, createDestination);
+router.put("/:id", protect, adminOnly, updateDestination);
+router.delete("/:id", protect, adminOnly, deleteDestination);
+
 module.exports = router;
