@@ -10,6 +10,7 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const favoriteRoutes = require("./routes/favoriteRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const authRoutes = require("./routes/authRoutes");
+const { protect, adminOnly } = require("./middleware/authMiddleware");
 app.use(express.json());
 app.use("/api/destinations", destinationRoutes);
 app.use("/api/categories", categoryRoutes);
@@ -19,13 +20,18 @@ app.get("/test", (req, res) => {
 app.use("/api/favorites", favoriteRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/auth", authRoutes);
+app.get("/api/auth/admin-test", protect, adminOnly, (req, res) => {
+  res.status(200).json({
+    message: "Welcome Admin!"
+  });
+});
 const PORT = 5000;
 
 app.get("/", (req, res) => {
      res.send("welcome to Bawsala Jordan");
 });
 
-const { protect } = require("./middleware/authMiddleware");
+
 
 app.get("/api/auth/protected", protect, (req, res) => {
   res.status(200).json({
