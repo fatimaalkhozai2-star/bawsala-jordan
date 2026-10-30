@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Login() {
+  const navigate = useNavigate();
   const { login } = useAuth();
 
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ function Login() {
 
     try {
       await login({ email, password });
-      setSuccess("تم تسجيل الدخول بنجاح!");
+navigate("/");
     } catch (err) {
       setError(err.message || "البريد الإلكتروني أو كلمة المرور غير صحيحة");
     } finally {

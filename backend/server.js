@@ -11,8 +11,14 @@ const favoriteRoutes = require("./routes/favoriteRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const authRoutes = require("./routes/authRoutes");
 const { protect, adminOnly } = require("./middleware/authMiddleware");
+const cors = require("cors");
 app.use(express.json());
-app.use("/api/destinations", destinationRoutes);
+app.use(cors({
+  origin: [
+    "http://localhost:5174",
+    "http://localhost:5173"
+  ]
+}));app.use("/api/destinations", destinationRoutes);
 app.use("/api/categories", categoryRoutes);
 
 app.use("/api/favorites", favoriteRoutes);
