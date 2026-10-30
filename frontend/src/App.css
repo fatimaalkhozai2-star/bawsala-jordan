@@ -711,6 +711,14 @@ button {
 .register-footer a:hover {
   color: #244638;
 }
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
 @media (max-width: 480px) {
   .login-card {
     padding: 35px 23px;

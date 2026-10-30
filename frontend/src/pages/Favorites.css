@@ -1,0 +1,263 @@
+
+/* =================================
+   Bawsala Jordan - Favorites
+================================= */
+
+.favorites-page {
+  min-height: 100vh;
+  padding: 45px 7% 80px;
+  background: #faf8f3;
+  color: #244638;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  box-sizing: border-box;
+}
+
+.favorites-page *,
+.favorites-page *::before,
+.favorites-page *::after {
+  box-sizing: border-box;
+}
+
+/* =================================
+   Favorites Header
+================================= */
+
+.favorites-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.favorites-header .back-home {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #244638;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.favorites-header .back-home:hover {
+  color: #b45b3b;
+}
+
+.favorites-header h1 {
+  margin: 0 0 12px;
+  color: #244638;
+  font-size: clamp(29px, 4vw, 40px);
+  font-weight: 700;
+}
+
+.favorites-header p {
+  margin: 0;
+  color: #777c72;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =================================
+   Favorites Grid
+================================= */
+
+.favorites-page .destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+/* =================================
+   Favorite Card
+================================= */
+
+.favorites-page .destination-card {
+  position: relative;
+  background: #E9DDC9;
+  border: 1px solid #E1D2BB;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favorites-page .destination-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 32px rgba(36, 70, 56, 0.11);
+}
+
+.favorites-page .destination-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.favorites-page .destination-card img {
+  display: block;
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.favorites-page .destination-card:hover img {
+  transform: scale(1.035);
+}
+
+.favorites-page .destination-info {
+  padding: 22px;
+  background: #E9DDC9;
+  text-align: start;
+}
+
+.favorites-page .destination-info h3 {
+  margin: 0 0 12px;
+  color: #244638;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.favorites-page .destination-info p {
+  margin: 0 0 12px;
+  color: #777c72;
+  font-size: 14px;
+}
+
+.favorites-page .destination-info span {
+  color: #b45b3b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =================================
+   Favorite Heart Button
+================================= */
+
+.favorites-page .destination-card .favorite-btn {
+  position: absolute;
+  bottom: 16px;
+  inset-inline-end: 16px;
+  z-index: 5;
+
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #b45b3b;
+  border-radius: 50%;
+  background: #b45b3b;
+  color: white;
+
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(36, 70, 56, 0.10);
+  transition: all 0.25s ease;
+}
+
+.favorites-page .destination-card .favorite-btn:hover {
+  background: #963f28;
+  border-color: #963f28;
+  transform: scale(1.12);
+}
+
+.favorites-page .destination-card .favorite-btn:active {
+  transform: scale(0.92);
+}
+
+/* =================================
+   Empty Favorites
+================================= */
+
+.favorites-empty {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 65px 25px;
+  background: #E9DDC9;
+  border: 1px solid #E1D2BB;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.favorites-empty h2 {
+  margin: 0 0 25px;
+  color: #244638;
+  font-size: 21px;
+  line-height: 1.8;
+}
+
+.favorites-empty a {
+  display: inline-block;
+  padding: 13px 25px;
+  background: #244638;
+  color: white;
+  text-decoration: none;
+  border-radius: 9px;
+  transition: all 0.3s;
+}
+
+.favorites-empty a:hover {
+  background: #b45b3b;
+  transform: translateY(-2px);
+}
+
+/* =================================
+   Loading and Error
+================================= */
+
+.favorites-page .error-message {
+  color: #b45b3b;
+  text-align: center;
+  padding: 25px;
+}
+
+.favorites-page > p {
+  text-align: center;
+  color: #777c72;
+}
+
+/* =================================
+   Responsive - Tablet
+================================= */
+
+@media (max-width: 1000px) {
+  .favorites-page .destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =================================
+   Responsive - Mobile
+================================= */
+
+@media (max-width: 600px) {
+  .favorites-page {
+    padding: 30px 18px 55px;
+  }
+
+  .favorites-header {
+    margin-bottom: 32px;
+  }
+
+  .favorites-page .destination-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .favorites-page .destination-card img {
+    height: 235px;
+  }
+
+  .favorites-page .destination-info {
+    padding: 18px;
+  }
+
+  .favorites-page .destination-info h3 {
+    font-size: 19px;
+  }
+
+  .favorites-empty {
+    padding: 45px 18px;
+  }
+}

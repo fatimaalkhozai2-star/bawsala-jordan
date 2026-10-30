@@ -1,0 +1,370 @@
+
+/* =================================
+   Bawsala Jordan - Destinations
+================================= */
+
+.destinations-page {
+  min-height: 100vh;
+  padding: 45px 7% 80px;
+  background: #faf8f3;
+  color: #244638;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Make sizing predictable */
+
+.destinations-page *,
+.destinations-page *::before,
+.destinations-page *::after {
+  box-sizing: border-box;
+}
+
+/* =================================
+   Top Navigation
+================================= */
+
+.destinations-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 55px;
+}
+
+.back-home {
+  color: #244638;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.back-home:hover {
+  color: #b45b3b;
+}
+
+.destinations-topbar .language-btn {
+  min-width: 48px;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #e5e0d6;
+  border-radius: 50px;
+  background: transparent;
+  color: #244638;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.destinations-topbar .language-btn:hover {
+  background: #244638;
+  border-color: #244638;
+  color: white;
+}
+
+/* =================================
+   Page Heading
+================================= */
+
+.destinations-page h1 {
+  margin: 0 0 14px;
+  color: #244638;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.destinations-page > p {
+  margin: 0 0 42px;
+  color: #777c72;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* =================================
+   Search and Filters
+================================= */
+
+.destination-filters {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 24px;
+  margin-bottom: 48px;
+  background: #ffffff;
+  border: 1px solid #eee9df;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(36, 70, 56, 0.05);
+}
+
+.destination-filters input,
+.destination-filters select {
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  padding: 14px 16px;
+  border: 1px solid #e5e0d6;
+  border-radius: 10px;
+  background: #faf8f3;
+  color: #244638;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.destination-filters input:focus,
+.destination-filters select:focus {
+  border-color: #b45b3b;
+  box-shadow: 0 0 0 3px rgba(180, 91, 59, 0.10);
+}
+
+.destination-filters input::placeholder {
+  color: #99978f;
+}
+
+.destination-filters button {
+  min-height: 52px;
+  padding: 13px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #244638;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.destination-filters button:hover {
+  background: #b45b3b;
+  transform: translateY(-2px);
+}
+
+/* =================================
+   Destination Grid
+================================= */
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+/* =================================
+   Destination Card
+================================= */
+
+.destination-card {
+  background: #E9DDC9;
+  border: 1px solid #E1D2BB;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 32px rgba(36, 70, 56, 0.11);
+}
+
+/* =================================
+   Favorite Heart Button
+================================= */
+
+.destination-card {
+  position: relative;
+}
+
+.destination-card .favorite-btn {
+  position: absolute;
+  bottom: 16px;
+  inset-inline-end: 16px;
+  z-index: 5;
+
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e5d8c4;
+  border-radius: 50%;
+  background: #faf8f3;
+  color: #244638;
+
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(36, 70, 56, 0.10);
+  transition: all 0.25s ease;
+}
+
+.destination-card .favorite-btn:hover {
+  transform: scale(1.12);
+  background: #244638;
+  color: white;
+}
+
+.destination-card .favorite-btn.is-favorite {
+  background: #b45b3b;
+  border-color: #b45b3b;
+  color: white;
+}
+
+.destination-card .favorite-btn.is-favorite:hover {
+  background: #963f28;
+  transform: scale(1.12);
+}
+
+.destination-card .favorite-btn:active {
+  transform: scale(0.92);
+}
+
+.destination-card .favorite-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+.destination-card .favorite-btn:focus-visible {
+  outline: 3px solid #b45b3b;
+  outline-offset: 3px;
+}
+
+/* =================================
+   Destination Image
+================================= */
+
+.destination-card img {
+  display: block;
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+  background: #e9e3d8;
+  transition: transform 0.5s ease;
+}
+
+.destination-card:hover img {
+  transform: scale(1.035);
+}
+
+/* =================================
+   Destination Information
+================================= */
+
+.destination-info {
+  padding: 22px;
+  text-align: start;
+  background: #E9DDC9;
+}
+
+.destination-info h3 {
+  margin: 12px 0;
+  color: #244638;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.destination-info p {
+  margin: 0 0 12px;
+  color: #85877f;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.destination-info span {
+  display: inline-block;
+  padding: 6px 13px;
+  border-radius: 30px;
+  background: #f5eee5;
+  color: #b45b3b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* =================================
+   Loading and Error
+================================= */
+
+.destinations-page .loading-message {
+  padding: 40px 20px;
+  color: #777c72;
+  text-align: center;
+  font-size: 16px;
+}
+
+.destinations-page .error-message {
+  padding: 25px;
+  color: #b45b3b;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* =================================
+   Responsive - Tablet
+================================= */
+
+@media (max-width: 1000px) {
+  .destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .destination-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =================================
+   Responsive - Mobile
+================================= */
+
+@media (max-width: 600px) {
+  .destinations-page {
+    padding: 30px 18px 55px;
+  }
+
+  .destinations-topbar {
+    margin-bottom: 38px;
+  }
+
+  .destinations-page h1 {
+    font-size: 29px;
+  }
+
+  .destinations-page > p {
+    margin-bottom: 28px;
+    font-size: 15px;
+  }
+
+  .destination-filters {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 32px;
+    border-radius: 14px;
+  }
+
+  .destination-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .destination-card img {
+    height: 235px;
+  }
+
+  .destination-info {
+    padding: 18px;
+  }
+
+  .destination-info h3 {
+    font-size: 19px;
+  }
+}
