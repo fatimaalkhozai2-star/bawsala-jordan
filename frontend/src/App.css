@@ -692,7 +692,25 @@ button {
   color: #28754a;
   font-size: 12px;
 }
+.register-footer {
+  margin-top: 25px;
+  text-align: center;
+}
 
+.register-footer p {
+  color: #777c72;
+  font-size: 13px;
+}
+
+.register-footer a {
+  color: #b45b3b;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.register-footer a:hover {
+  color: #244638;
+}
 @media (max-width: 480px) {
   .login-card {
     padding: 35px 23px;

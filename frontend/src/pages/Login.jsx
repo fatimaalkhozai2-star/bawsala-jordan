@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Login() {
@@ -60,6 +61,12 @@ function Login() {
             {loading ? "جارٍ تسجيل الدخول..." : "تسجيل الدخول"}
           </button>
         </form>
+
+        <div className="register-footer">
+          <p>
+            ليس لديك حساب؟ <Link to="/register">إنشاء حساب جديد</Link>
+          </p>
+        </div>
       </div>
     </div>
   );
