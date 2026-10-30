@@ -1,0 +1,158 @@
+
+/* =====================================
+   Bawsala Jordan - Destination Details
+===================================== */
+
+.destination-details-page {
+  min-height: 100vh;
+  padding: 24px 7% 80px;
+  background:
+    linear-gradient(rgba(250, 248, 243, 0.91), rgba(250, 248, 243, 0.94)),
+    url("https://images.unsplash.com/photo-1548786811-dd6e453ccca7?auto=format&fit=crop&w=1920&q=85");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #244638;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  overflow: hidden;
+}
+
+.destination-details-page * {
+  box-sizing: border-box;
+}
+
+/* Back link */
+
+.destination-details-page > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 11px 18px;
+  border-radius: 30px;
+  background: rgba(233, 221, 201, 0.8);
+  color: #244638;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.destination-details-page > a:hover {
+  background: #244638;
+  color: white;
+  transform: translateX(-4px);
+}
+
+/* Main destination image */
+
+.destination-details-page > img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 48vw, 570px);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(36, 70, 56, 0.14);
+}
+
+/* Destination information */
+
+.destination-details-info {
+  position: relative;
+  max-width: 1000px;
+  margin: -55px auto 0;
+  padding: 38px 45px;
+  background: rgba(250, 248, 243, 0.97);
+  border: 1px solid rgba(225, 210, 187, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(36, 70, 56, 0.09);
+}
+
+.destination-details-info > span {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 7px 15px;
+  border-radius: 30px;
+  background: #E9DDC9;
+  color: #b45b3b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.destination-details-info h1 {
+  margin: 0 0 22px;
+  color: #244638;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.destination-details-info p {
+  margin: 0 0 17px;
+  color: #6f756d;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.destination-details-info p:first-of-type {
+  color: #46594e;
+  font-size: 18px;
+  line-height: 2.1;
+}
+
+.destination-details-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* Loading and error */
+
+.destination-details-page > p,
+.destination-details-page main > p {
+  padding: 30px;
+  color: #244638;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .destination-details-page {
+    padding: 20px 18px 55px;
+    background-attachment: scroll;
+  }
+
+  .destination-details-page > img {
+    height: 330px;
+    border-radius: 15px;
+  }
+
+  .destination-details-info {
+    margin-top: -30px;
+    padding: 28px 22px;
+    border-radius: 16px;
+  }
+
+  .destination-details-info h1 {
+    font-size: 30px;
+  }
+
+  .destination-details-info p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .destination-details-page > img {
+    height: 250px;
+  }
+
+  .destination-details-info {
+    padding: 23px 18px;
+  }
+
+  .destination-details-info h1 {
+    font-size: 26px;
+  }
+}

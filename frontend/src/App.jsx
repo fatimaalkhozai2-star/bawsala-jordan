@@ -13,7 +13,7 @@ import Favorites from "./pages/Favorites";
 import { getDestinations } from "./services/destinationService";
 import { useLanguage } from "./context/LanguageContext";
 import { useAuth } from "./context/AuthContext";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 function Home() {
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -373,9 +373,12 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/destinations" element={<Destinations />} />
-      <Route path="/destinations/:id" element={<DestinationDetails />} />
-      <Route path="/favorites" element={<Favorites />} />
+
+      <Route element={<ProtectedRoute />}>
+        <Route path="/destinations" element={<Destinations />} />
+        <Route path="/destinations/:id" element={<DestinationDetails />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Route>
     </Routes>
   );
 }

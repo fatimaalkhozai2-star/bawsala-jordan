@@ -4,9 +4,22 @@
 ================================= */
 
 .favorites-page {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   padding: 45px 7% 80px;
-  background: #faf8f3;
+
+  background:
+    linear-gradient(
+      rgba(250, 248, 243, 0.87),
+      rgba(250, 248, 243, 0.91)
+    ),
+    url("https://images.unsplash.com/photo-1548786811-dd6e453ccca7?auto=format&fit=crop&w=1920&q=85");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
   color: #244638;
   font-family: "IBM Plex Sans Arabic", sans-serif;
   box-sizing: border-box;
@@ -18,23 +31,21 @@
   box-sizing: border-box;
 }
 
-/* =================================
-   Favorites Header
-================================= */
+/* Header */
 
 .favorites-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 55px;
 }
 
 .favorites-header .back-home {
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   color: #244638;
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .favorites-header .back-home:hover {
@@ -42,7 +53,7 @@
 }
 
 .favorites-header h1 {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   color: #244638;
   font-size: clamp(29px, 4vw, 40px);
   font-weight: 700;
@@ -52,35 +63,37 @@
   margin: 0;
   color: #777c72;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
-/* =================================
-   Favorites Grid
-================================= */
+/* Grid */
 
 .favorites-page .destination-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 360px));
+  justify-content: start;
+  gap: 30px;
 }
 
-/* =================================
-   Favorite Card
-================================= */
+/* Destination Card */
 
 .favorites-page .destination-card {
   position: relative;
   background: #E9DDC9;
-  border: 1px solid #E1D2BB;
-  border-radius: 16px;
+  border: 1px solid rgba(225, 210, 187, 0.9);
+  border-radius: 18px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  box-shadow: 0 8px 25px rgba(36, 70, 56, 0.07);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .favorites-page .destination-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 32px rgba(36, 70, 56, 0.11);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(36, 70, 56, 0.15);
 }
 
 .favorites-page .destination-card-link {
@@ -98,7 +111,7 @@
 }
 
 .favorites-page .destination-card:hover img {
-  transform: scale(1.035);
+  transform: scale(1.04);
 }
 
 .favorites-page .destination-info {
@@ -127,9 +140,7 @@
   font-weight: 600;
 }
 
-/* =================================
-   Favorite Heart Button
-================================= */
+/* Favorite Heart */
 
 .favorites-page .destination-card .favorite-btn {
   position: absolute;
@@ -137,8 +148,9 @@
   inset-inline-end: 16px;
   z-index: 5;
 
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,32 +164,33 @@
   line-height: 1;
   cursor: pointer;
 
-  box-shadow: 0 4px 12px rgba(36, 70, 56, 0.10);
+  box-shadow: 0 5px 14px rgba(36, 70, 56, 0.14);
   transition: all 0.25s ease;
 }
 
 .favorites-page .destination-card .favorite-btn:hover {
   background: #963f28;
   border-color: #963f28;
-  transform: scale(1.12);
+  transform: scale(1.1);
 }
 
 .favorites-page .destination-card .favorite-btn:active {
   transform: scale(0.92);
 }
 
-/* =================================
-   Empty Favorites
-================================= */
+/* Empty Favorites */
 
 .favorites-empty {
   max-width: 650px;
   margin: 50px auto;
   padding: 65px 25px;
-  background: #E9DDC9;
+
+  background: rgba(233, 221, 201, 0.94);
   border: 1px solid #E1D2BB;
   border-radius: 18px;
+
   text-align: center;
+  box-shadow: 0 10px 30px rgba(36, 70, 56, 0.08);
 }
 
 .favorites-empty h2 {
@@ -202,9 +215,7 @@
   transform: translateY(-2px);
 }
 
-/* =================================
-   Loading and Error
-================================= */
+/* Loading and Error */
 
 .favorites-page .error-message {
   color: #b45b3b;
@@ -217,27 +228,24 @@
   color: #777c72;
 }
 
-/* =================================
-   Responsive - Tablet
-================================= */
+/* Tablet */
 
 @media (max-width: 1000px) {
-  .favorites-page .destination-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .favorites-page {
+    padding-inline: 5%;
   }
 }
 
-/* =================================
-   Responsive - Mobile
-================================= */
+/* Mobile */
 
 @media (max-width: 600px) {
   .favorites-page {
     padding: 30px 18px 55px;
+    background-attachment: scroll;
   }
 
   .favorites-header {
-    margin-bottom: 32px;
+    margin-bottom: 35px;
   }
 
   .favorites-page .destination-grid {
