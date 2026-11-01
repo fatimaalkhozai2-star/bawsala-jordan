@@ -1,0 +1,275 @@
+
+/* =====================================
+   Bawsala Jordan - Edit Trip
+===================================== */
+
+.edit-trip-page {
+  min-height: 100vh;
+  padding: 65px 7%;
+  background:
+    radial-gradient(circle at 5% 5%, rgba(222, 207, 181, 0.24), transparent 30%),
+    #faf8f3;
+  color: #244638;
+}
+
+/* Header */
+
+.edit-trip-header {
+  max-width: 1000px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.edit-trip-header h1 {
+  margin: 0;
+  color: #244638;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.edit-trip-header h1::after {
+  content: "";
+  display: block;
+  width: 65px;
+  height: 4px;
+  margin: 14px auto;
+  border-radius: 10px;
+  background: #b45b3b;
+}
+
+.edit-trip-header p {
+  margin: 0;
+  color: #938574;
+  font-size: 16px;
+}
+
+/* Form Container */
+
+.edit-trip-form {
+  max-width: 1000px;
+  margin: auto;
+  padding: 42px;
+  background: #fff;
+  border: 1px solid #eee4d7;
+  border-radius: 25px;
+  box-shadow: 0 15px 45px rgba(47, 58, 43, 0.07);
+}
+
+/* Fields */
+
+.edit-trip-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.edit-trip-field > label {
+  color: #244638;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.edit-trip-field input[type="text"],
+.edit-trip-field input[type="date"],
+.edit-trip-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  border: 1px solid #e5d9c8;
+  border-radius: 13px;
+  outline: none;
+  background: #faf8f3;
+  color: #244638;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.edit-trip-field input:focus,
+.edit-trip-field textarea:focus {
+  border-color: #547563;
+  box-shadow: 0 0 0 4px rgba(36, 70, 56, 0.08);
+}
+
+.edit-trip-field textarea {
+  resize: vertical;
+  min-height: 125px;
+  line-height: 1.8;
+}
+
+/* Destination Selection */
+
+.edit-trip-destinations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.edit-trip-destination {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 75px;
+  padding: 12px 15px;
+  border: 1px solid #eee2d3;
+  border-radius: 14px;
+  background: #faf8f3;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.edit-trip-destination:hover {
+  border-color: #9eaf9e;
+  transform: translateY(-2px);
+}
+
+.edit-trip-destination.selected {
+  background: #eef3ed;
+  border-color: #547563;
+  box-shadow: 0 4px 12px rgba(36, 70, 56, 0.07);
+}
+
+.edit-trip-destination input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: #244638;
+  cursor: pointer;
+}
+
+.edit-trip-destination img {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.edit-trip-destination span {
+  color: #244638;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Dates */
+
+.edit-trip-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.edit-trip-dates .edit-trip-field {
+  min-width: 0;
+}
+
+/* Error */
+
+.edit-trip-error {
+  margin: 0 0 22px;
+  padding: 14px 17px;
+  color: #a43d2e;
+  background: #fbebe7;
+  border: 1px solid #efc9bf;
+  border-radius: 11px;
+  font-size: 14px;
+}
+
+/* Actions */
+
+.edit-trip-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 13px;
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid #eee5d9;
+}
+
+.edit-trip-actions button,
+.edit-trip-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 135px;
+  padding: 15px 23px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.edit-trip-actions button {
+  color: #fff;
+  background: #244638;
+}
+
+.edit-trip-actions button:hover:not(:disabled) {
+  background: #315b48;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 18px rgba(36, 70, 56, 0.18);
+}
+
+.edit-trip-actions button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.edit-trip-cancel {
+  color: #244638;
+  background: #eee5d7;
+}
+
+.edit-trip-cancel:hover {
+  color: #fff;
+  background: #8b8175;
+  transform: translateY(-3px);
+}
+
+/* Loading */
+
+.edit-trip-message {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #faf8f3;
+  color: #244638;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .edit-trip-page {
+    padding: 35px 5%;
+  }
+
+  .edit-trip-form {
+    padding: 23px 18px;
+    border-radius: 18px;
+  }
+
+  .edit-trip-destinations,
+  .edit-trip-dates {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-trip-actions {
+    flex-direction: column-reverse;
+  }
+
+  .edit-trip-actions button,
+  .edit-trip-cancel {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

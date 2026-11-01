@@ -14,14 +14,19 @@ import { getDestinations } from "./services/destinationService";
 import { useLanguage } from "./context/LanguageContext";
 import { useAuth } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AIChat from "./components/AIChat";
+import AdminDashboard from "./pages/AdminDashboard";
+import MyTrips from "./pages/MyTrips";
+import CreateTrip from "./pages/CreateTrip";
+import EditTrip from "./pages/EditTrip";
+import TripDetails from "./pages/TripDetails";
 function Home() {
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const { language, toggleLanguage, isArabic } = useLanguage();
-  const { isLoggedIn, logout } = useAuth();
-
+const { isLoggedIn, isAdmin, logout } = useAuth();
   const content = {
     en: {
       brand: "Bawsala",
@@ -55,7 +60,9 @@ function Home() {
         "Explore destinations, plan your trip, and discover new places with Bawsala Jordan.",
       backToTop: "Back to top ↑",
       footer: "Made with love to explore Jordan 🇯🇴",
-      category: "Destination"
+      category: "Destination",
+      adminDashboard: "Admin Dashboard",
+      trips: "My Trips",
     },
 
     ar: {
@@ -90,7 +97,9 @@ function Home() {
         "استكشف الوجهات، خطط لرحلتك، واكتشف أماكن جديدة مع بوصلة الأردن.",
       backToTop: "العودة للأعلى ↑",
       footer: "صُنع بحب لاستكشاف الأردن 🇯🇴",
-      category: "وجهة سياحية"
+      category: "وجهة سياحية",
+      adminDashboard: "لوحة التحكم",
+      trips: "رحلاتي",
     }
   };
 
@@ -136,10 +145,17 @@ function Home() {
           <Link to="/favorites">
             {t.favorites}
           </Link>
-
+<Link to="/trips">
+  {t.trips}
+</Link>
           <a href="#about">
             {t.about}
           </a>
+          {isAdmin && (
+  <Link to="/admin">
+    {t.adminDashboard}
+  </Link>
+)}
         </nav>
 
         <div className="nav-actions">
@@ -259,9 +275,7 @@ function Home() {
           {!loading && !error && destinations.length > 0 && (
 
             <div className="destination-grid">
-
-              {destinations.map((destination, index) => {
-
+{destinations.slice(0, 3).map((destination, index) => {
                 const name = isArabic
                   ? destination.nameAr || destination.name
                   : destination.name;
@@ -366,21 +380,35 @@ function Home() {
     </div>
   );
 }
-
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+  const { isLoggedIn } = useAuth();
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/destinations" element={<Destinations />} />
-        <Route path="/destinations/:id" element={<DestinationDetails />} />
-        <Route path="/favorites" element={<Favorites />} />
-      </Route>
-    </Routes>
+  return (
+    <>
+      <Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
+
+  {/* Protected user routes */}
+  <Route element={<ProtectedRoute />}>
+  <Route path="/destinations" element={<Destinations />} />
+  <Route path="/destinations/:id" element={<DestinationDetails />} />
+  <Route path="/favorites" element={<Favorites />} />
+  <Route path="/trips" element={<MyTrips />} />
+  <Route path="/trips/create" element={<CreateTrip />} />
+  <Route path="/trips/:id" element={<TripDetails />} />
+  <Route path="/trips/edit/:id" element={<EditTrip />} />
+</Route>
+
+  {/* Admin routes */}
+  <Route element={<ProtectedRoute adminOnly={true} />}>
+    <Route path="/admin" element={<AdminDashboard />} />
+  </Route>
+</Routes>
+
+      {isLoggedIn && <AIChat />}
+    </>
   );
 }
-
 export default App;

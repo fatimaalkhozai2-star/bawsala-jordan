@@ -1,0 +1,298 @@
+
+/* ================================
+   Bawsala Jordan - Trip Details
+================================ */
+
+.trip-details-page {
+  min-height: 100vh;
+  padding: 65px 7%;
+  background:
+    radial-gradient(circle at 5% 5%, rgba(222, 207, 181, 0.22), transparent 30%),
+    #faf8f3;
+  color: #244638;
+  font-family: inherit;
+}
+
+/* Header */
+
+.trip-details-header {
+  max-width: 1250px;
+  margin: 0 auto 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.trip-details-header h1 {
+  margin: 0;
+  color: #244638;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.trip-details-header h1::after {
+  content: "";
+  display: block;
+  width: 65px;
+  height: 4px;
+  margin-top: 13px;
+  border-radius: 10px;
+  background: #b45b3b;
+}
+
+.trip-details-header p {
+  margin: 14px 0 0;
+  color: #8b8175;
+  font-size: 16px;
+}
+
+/* Back Button */
+
+.trip-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 23px;
+  border: 1px solid #d9cbb7;
+  border-radius: 12px;
+  color: #244638;
+  background: #eee5d7;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.trip-back-btn:hover {
+  background: #244638;
+  color: #fff;
+  border-color: #244638;
+  transform: translateY(-3px);
+}
+
+/* Main Card */
+
+.trip-details-card {
+  max-width: 1250px;
+  margin: auto;
+  padding: 42px;
+  background: #fff;
+  border: 1px solid #eee5d8;
+  border-radius: 25px;
+  box-shadow: 0 15px 45px rgba(47, 58, 43, 0.07);
+}
+
+/* Dates */
+
+.trip-details-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 45px;
+}
+
+.trip-details-dates > div {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f5efe5, #eee3d1);
+  border: 1px solid #e7d9c5;
+  border-radius: 18px;
+}
+
+.trip-details-dates > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 5px;
+  height: 100%;
+  background: #b45b3b;
+}
+
+.trip-details-dates span {
+  color: #8b8175;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.trip-details-dates strong {
+  color: #244638;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+/* Section Headings */
+
+.trip-details-card h2 {
+  margin: 0 0 24px;
+  color: #244638;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.trip-details-card h2::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 23px;
+  margin-inline-end: 12px;
+  vertical-align: -4px;
+  border-radius: 5px;
+  background: #b45b3b;
+}
+
+/* Destination Cards */
+
+.trip-details-destinations {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 45px;
+}
+
+.trip-details-destination {
+  overflow: hidden;
+  background: #faf8f3;
+  border: 1px solid #eee3d4;
+  border-radius: 18px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.trip-details-destination:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px rgba(36, 70, 56, 0.13);
+}
+
+.trip-details-destination img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.trip-details-destination:hover img {
+  transform: scale(1.045);
+}
+
+.trip-details-destination h3 {
+  margin: 0;
+  padding: 18px 18px 7px;
+  color: #244638;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.trip-details-destination p {
+  margin: 0;
+  padding: 0 18px 18px;
+  color: #998674;
+  font-size: 14px;
+}
+
+/* Notes */
+
+.trip-details-notes {
+  padding: 28px;
+  background: #f7f2e9;
+  border: 1px solid #e9decd;
+  border-radius: 18px;
+  position: relative;
+}
+
+.trip-details-notes::after {
+  content: "✦";
+  position: absolute;
+  top: 22px;
+  inset-inline-end: 25px;
+  color: #b45b3b;
+  font-size: 23px;
+}
+
+.trip-details-notes p {
+  margin: 0;
+  padding: 18px 20px;
+  color: #6e685e;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  min-height: 65px;
+}
+
+/* Loading / Error */
+
+.trip-details-message {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 30px;
+  background: #faf8f3;
+  color: #244638;
+  font-size: 18px;
+  text-align: center;
+}
+
+.trip-details-message a {
+  color: #b45b3b;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .trip-details-destinations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trip-details-card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .trip-details-page {
+    padding: 35px 5%;
+  }
+
+  .trip-details-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .trip-details-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .trip-details-dates {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .trip-details-destinations {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-details-destination img {
+    height: 220px;
+  }
+
+  .trip-details-card h2 {
+    font-size: 21px;
+  }
+
+  .trip-details-dates strong {
+    font-size: 18px;
+  }
+}
