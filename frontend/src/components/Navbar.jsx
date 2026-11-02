@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -14,6 +13,7 @@ function Navbar() {
       home: "Home",
       destinations: "Destinations",
       favorites: "My Favorites",
+      trips: "My Trips",
       about: "About",
       login: "Login",
       logout: "Logout",
@@ -26,6 +26,7 @@ function Navbar() {
       home: "الرئيسية",
       destinations: "الوجهات",
       favorites: "مفضلتي",
+      trips: "رحلاتي",
       about: "عن المشروع",
       login: "تسجيل الدخول",
       logout: "تسجيل الخروج",
@@ -48,10 +49,14 @@ function Navbar() {
 
       <nav className="nav-links">
         <Link to="/">{content.home}</Link>
+
         <Link to="/destinations">{content.destinations}</Link>
 
         {isLoggedIn && (
-          <Link to="/favorites">{content.favorites}</Link>
+          <>
+            <Link to="/trips">{content.trips}</Link>
+            <Link to="/favorites">{content.favorites}</Link>
+          </>
         )}
 
         <Link to="/#about">{content.about}</Link>

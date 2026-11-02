@@ -42,7 +42,8 @@ function CreateTrip() {
       dateError: "End date must be after start date",
       destinationError: "Please select at least one destination",
       loadError: "Could not load destinations",
-      createError: "Could not create trip"
+      createError: "Could not create trip",
+      backToDestinations: "← Back to Destinations",
     },
     ar: {
       title: "إنشاء رحلة جديدة",
@@ -62,7 +63,8 @@ function CreateTrip() {
       dateError: "يجب أن يكون تاريخ النهاية بعد تاريخ البداية",
       destinationError: "يرجى اختيار وجهة واحدة على الأقل",
       loadError: "تعذر تحميل الوجهات",
-      createError: "تعذر إنشاء الرحلة"
+      createError: "تعذر إنشاء الرحلة",
+      backToDestinations: "العودة إلى الوجهات ←",
     }
   };
 
@@ -141,14 +143,19 @@ function CreateTrip() {
     <main
       className="create-trip-page"
       dir={isArabic ? "rtl" : "ltr"}
-    >
-      <header className="create-trip-header">
-        <div>
-          <h1>{t.title}</h1>
-          <p>{t.subtitle}</p>
-        </div>
-      </header>
+    ><header className="create-trip-header">
+  <div>
+    <h1>{t.title}</h1>
+    <p>{t.subtitle}</p>
+  </div>
 
+  <Link
+    to="/destinations"
+    className="back-destinations-link"
+  >
+    {t.backToDestinations}
+  </Link>
+</header>
       <form className="create-trip-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="trip-title">{t.tripName}</label>
