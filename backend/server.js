@@ -61,13 +61,9 @@ app.get("/api/auth/protected", protect, (req, res) => {
 
 // Start Server
 const PORT = process.env.PORT || 5000;
+// Start server first
+app.listen(PORT, () => {
+  console.log(`Bawsala Jordan server is running on port ${PORT}`);
 
-const startServer = async () => {
-  await connectDB();
-
-  app.listen(PORT, () => {
-    console.log(`Bawsala Jordan server is running on port ${PORT}`);
-  });
-};
-
-startServer();
+  connectDB();
+});
