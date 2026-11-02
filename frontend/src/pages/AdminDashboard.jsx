@@ -43,7 +43,7 @@ function AdminDashboard() {
     const fetchStats = async () => {
       try {
         const response = await fetch(
-"https://bawsala-jordan-backend.onrender.com/api/admin/stats"          {
+"https://bawsala-jordan-backend.onrender.com/api/admin/stats" ,         {
             headers: {
               Authorization: `Bearer ${token}`
             }
