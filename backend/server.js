@@ -1,21 +1,25 @@
 
-
 require("dotenv").config();
-//console.log("OpenRouter key loaded:", Boolean(process.env.OPENROUTER_API_KEY));
+
 const express = require("express");
 const app = express();
 
 const connectDB = require("./config/db");
+
 const destinationRoutes = require("./routes/destinationRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const favoriteRoutes = require("./routes/favoriteRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const aiRoutes = require("./routes/aiRoutes");
+
 const { protect, adminOnly } = require("./middleware/authMiddleware");
 const cors = require("cors");
-const aiRoutes = require("./routes/aiRoutes");
+
+// Middleware
 app.use(express.json());
+
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
@@ -25,32 +29,38 @@ const allowedOrigins = [
 app.use(cors({
   origin: allowedOrigins
 }));
-}));app.use("/api/destinations", destinationRoutes);
-app.use("/api/categories", categoryRoutes);
 
+// API Routes
+app.use("/api/destinations", destinationRoutes);
+app.use("/api/categories", categoryRoutes);
 app.use("/api/favorites", favoriteRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/admin", adminRoutes);
+
+// Admin Test Route
 app.get("/api/auth/admin-test", protect, adminOnly, (req, res) => {
   res.status(200).json({
     message: "Welcome Admin!"
   });
 });
-const PORT = process.env.PORT || 5000;
+
+// Home Route
 app.get("/", (req, res) => {
-     res.send("welcome to Bawsala Jordan");
+  res.send("welcome to Bawsala Jordan");
 });
 
-
-
+// Protected Route
 app.get("/api/auth/protected", protect, (req, res) => {
   res.status(200).json({
     message: "Access granted",
     user: req.user
   });
 });
+
+// Start Server
+const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   await connectDB();
@@ -59,4 +69,5 @@ const startServer = async () => {
     console.log(`Bawsala Jordan server is running on port ${PORT}`);
   });
 };
+
 startServer();
