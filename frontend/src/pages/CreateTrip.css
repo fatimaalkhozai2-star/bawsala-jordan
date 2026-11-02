@@ -221,3 +221,7 @@
   width: 100%;
 }
 }
+.trip-dates-row input[type="date"] {
+  direction: ltr;
+  text-align: left;
+}

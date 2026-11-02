@@ -16,11 +16,15 @@ const { protect, adminOnly } = require("./middleware/authMiddleware");
 const cors = require("cors");
 const aiRoutes = require("./routes/aiRoutes");
 app.use(express.json());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: [
-    "http://localhost:5174",
-    "http://localhost:5173"
-  ]
+  origin: allowedOrigins
+}));
 }));app.use("/api/destinations", destinationRoutes);
 app.use("/api/categories", categoryRoutes);
 
@@ -34,8 +38,7 @@ app.get("/api/auth/admin-test", protect, adminOnly, (req, res) => {
     message: "Welcome Admin!"
   });
 });
-const PORT = 5000;
-
+const PORT = process.env.PORT || 5000;
 app.get("/", (req, res) => {
      res.send("welcome to Bawsala Jordan");
 });

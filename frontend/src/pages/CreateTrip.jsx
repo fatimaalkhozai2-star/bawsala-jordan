@@ -45,6 +45,7 @@ function CreateTrip() {
       createError: "Could not create trip",
       backToDestinations: "← Back to Destinations",
     },
+
     ar: {
       title: "إنشاء رحلة جديدة",
       subtitle: "خطط لمغامرتك القادمة في الأردن",
@@ -65,7 +66,7 @@ function CreateTrip() {
       loadError: "تعذر تحميل الوجهات",
       createError: "تعذر إنشاء الرحلة",
       backToDestinations: "العودة إلى الوجهات ←",
-    }
+    },
   };
 
   const t = content[language] || content.en;
@@ -111,7 +112,7 @@ function CreateTrip() {
       return;
     }
 
-    if (new Date(endDate) <= new Date(startDate)) {
+    if (endDate <= startDate) {
       setError(t.dateError);
       return;
     }
@@ -125,7 +126,7 @@ function CreateTrip() {
           destinations: selectedDestinations,
           startDate,
           endDate,
-          notes: notes.trim()
+          notes: notes.trim(),
         },
         token
       );
@@ -143,22 +144,25 @@ function CreateTrip() {
     <main
       className="create-trip-page"
       dir={isArabic ? "rtl" : "ltr"}
-    ><header className="create-trip-header">
-  <div>
-    <h1>{t.title}</h1>
-    <p>{t.subtitle}</p>
-  </div>
+    >
+      <header className="create-trip-header">
+        <div>
+          <h1>{t.title}</h1>
+          <p>{t.subtitle}</p>
+        </div>
 
-  <Link
-    to="/destinations"
-    className="back-destinations-link"
-  >
-    {t.backToDestinations}
-  </Link>
-</header>
+        <Link
+          to="/destinations"
+          className="back-destinations-link"
+        >
+          {t.backToDestinations}
+        </Link>
+      </header>
+
       <form className="create-trip-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="trip-title">{t.tripName}</label>
+
           <input
             id="trip-title"
             type="text"
@@ -183,7 +187,9 @@ function CreateTrip() {
                 >
                   <input
                     type="checkbox"
-                    checked={selectedDestinations.includes(destination._id)}
+                    checked={selectedDestinations.includes(
+                      destination._id
+                    )}
                     onChange={() =>
                       handleDestinationChange(destination._id)
                     }
@@ -210,9 +216,12 @@ function CreateTrip() {
         <div className="trip-dates-row">
           <div className="form-group">
             <label htmlFor="start-date">{t.startDate}</label>
+
             <input
               id="start-date"
               type="date"
+              lang="en-GB"
+              dir="ltr"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               required
@@ -221,9 +230,12 @@ function CreateTrip() {
 
           <div className="form-group">
             <label htmlFor="end-date">{t.endDate}</label>
+
             <input
               id="end-date"
               type="date"
+              lang="en-GB"
+              dir="ltr"
               min={startDate || undefined}
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
@@ -234,6 +246,7 @@ function CreateTrip() {
 
         <div className="form-group">
           <label htmlFor="trip-notes">{t.notes}</label>
+
           <textarea
             id="trip-notes"
             rows="4"
