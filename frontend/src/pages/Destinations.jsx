@@ -13,7 +13,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { useAuth } from "../context/AuthContext";
 
 import "./Destinations.css";
-
+import Navbar from "../components/Navbar";
 function Destinations() {
   const [destinations, setDestinations] = useState([]);
   const [favorites, setFavorites] = useState([]);
@@ -27,7 +27,7 @@ function Destinations() {
   const [governorate, setGovernorate] = useState("");
   const [category, setCategory] = useState("");
 
-  const { language, toggleLanguage, isArabic } = useLanguage();
+const { language, isArabic } = useLanguage();
   const { token } = useAuth();
 
   const navigate = useNavigate();
@@ -162,75 +162,11 @@ const existingFavorite = favorites.find((favorite) => {
   };
 
   return (
-    <div
-      className="destinations-page"
-      dir={isArabic ? "rtl" : "ltr"}
-    >
-      <div className="destinations-topbar">
-        <Link to="/" className="back-home">
-          {t.back}
-        </Link>
-
-        <button
-          className="language-btn"
-          type="button"
-          onClick={toggleLanguage}
-        >
-          {language === "en" ? "العربية" : "English"}
-        </button>
-      </div>
-
-      <h1>{t.title}</h1>
-      <p>{t.description}</p>
-
-      {/* Search and Filters */}
-      <div className="destination-filters">
-        <input
-          type="text"
-          placeholder={t.search}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-
-        <select
-          value={governorate}
-          onChange={(e) => setGovernorate(e.target.value)}
-        >
-          <option value="">{t.allGovernorates}</option>
-
-          <option value="Ma'an">{isArabic ? "معان" : "Ma'an"}</option>
-          <option value="Aqaba">{isArabic ? "العقبة" : "Aqaba"}</option>
-          <option value="Madaba">{isArabic ? "مادبا" : "Madaba"}</option>
-          <option value="Jerash">{isArabic ? "جرش" : "Jerash"}</option>
-          <option value="Ajloun">{isArabic ? "عجلون" : "Ajloun"}</option>
-          <option value="Irbid">{isArabic ? "إربد" : "Irbid"}</option>
-          <option value="Tafilah">{isArabic ? "الطفيلة" : "Tafilah"}</option>
-        </select>
-
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="">{t.allCategories}</option>
-          <option value="Historical">{isArabic ? "تاريخية" : "Historical"}</option>
-          <option value="Natural">{isArabic ? "طبيعية" : "Natural"}</option>
-          <option value="Religious">{isArabic ? "دينية" : "Religious"}</option>
-          <option value="Natural & Therapeutic">
-            {isArabic ? "طبيعية وعلاجية" : "Natural & Therapeutic"}
-          </option>
-        </select>
-
-        <button
-          type="button"
-          onClick={() => {
-            setSearch("");
-            setGovernorate("");
-            setCategory("");
-          }}
-        >
-          {t.clear}
-        </button>
-      </div>
+   <div
+  className="destinations-page"
+  dir={isArabic ? "rtl" : "ltr"}
+>
+  <Navbar />
 
       {loading && <p>{t.loading}</p>}
 

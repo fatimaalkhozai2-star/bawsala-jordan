@@ -1,6 +1,7 @@
 
 
 require("dotenv").config();
+//console.log("OpenRouter key loaded:", Boolean(process.env.OPENROUTER_API_KEY));
 const express = require("express");
 const app = express();
 
@@ -10,8 +11,10 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const favoriteRoutes = require("./routes/favoriteRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 const { protect, adminOnly } = require("./middleware/authMiddleware");
 const cors = require("cors");
+const aiRoutes = require("./routes/aiRoutes");
 app.use(express.json());
 app.use(cors({
   origin: [
@@ -24,6 +27,8 @@ app.use("/api/categories", categoryRoutes);
 app.use("/api/favorites", favoriteRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/ai", aiRoutes);
+app.use("/api/admin", adminRoutes);
 app.get("/api/auth/admin-test", protect, adminOnly, (req, res) => {
   res.status(200).json({
     message: "Welcome Admin!"
@@ -51,5 +56,4 @@ const startServer = async () => {
     console.log(`Bawsala Jordan server is running on port ${PORT}`);
   });
 };
-
 startServer();

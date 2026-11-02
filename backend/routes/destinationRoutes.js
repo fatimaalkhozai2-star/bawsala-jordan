@@ -11,7 +11,11 @@ const {
 } = require("../controllers/destinationController");
 
 const { protect, adminOnly } = require("../middleware/authMiddleware");
-
+console.log({
+  getAllDestinations: typeof getAllDestinations,
+  getDestinationById: typeof getDestinationById,
+  createDestination: typeof createDestination
+});
 // Public routes
 router.get("/", getAllDestinations);
 router.get("/:id", getDestinationById);
